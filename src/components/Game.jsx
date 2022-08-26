@@ -11,54 +11,58 @@ import imgI from '../images/i.jpg';
 import imgJ from '../images/j.jpg';
 import imgK from '../images/k.jpg';
 import imgL from '../images/l.jpg';
-
 import Card from './Card';
-const Game = (props) => {
+
+const photos = [
+  imgA,
+  imgB,
+  imgC,
+  imgD,
+  imgE,
+  imgF,
+  imgG,
+  imgH,
+  imgI,
+  imgJ,
+  imgK,
+  imgL,
+]
+
+const createNewGame = () => {
+  const newGame = [];
+  let maxLength = 6;
+  let i = 0;
+  while (i < maxLength) {
+    let randInd = Math.floor(Math.random() * 12);
+    function indChecker (randInd) {
+      return randInd = Math.floor(Math.random() * 12);
+    }
+    if (newGame.includes(randInd)) {
+      indChecker();
+    } else {
+      newGame.push(randInd);
+      newGame.push(randInd);
+      i++;
+    }
+  }
+  newGame.sort((a, b) => 0.5 - Math.random());
+  return newGame;
+}
+
+const Game = () => {
   const [game, setGame] = useState([]);
+  console.log('hi', game);
   const [flippedCount, setFlippedCount] = useState(0);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
 
-  const photos = [
-    imgA,
-    imgB,
-    imgC,
-    imgD,
-    imgE,
-    imgF,
-    imgG,
-    imgH,
-    imgI,
-    imgJ,
-    imgK,
-    imgL,
-  ]
-
-  // Individual Img Click Handler
-  //  const clickPic = (index) => {
-  //   // If card isn't flipped, then add index to flippedIndexes
-  //   if (!flippedIndexes.includes(index)) {
-  //     setFlippedIndexes([...flippedIndexes, index]);
-  //     // Update photo
-  //     setPic(photos[index]);
-  //     setFlippedCount(flippedCount++);
-  //   }
-  // }
-  // // Load Game
-  // useEffect(() => {
-
-  // })
-
-  // useEffect(() => {
-
-  // }, [game]) 
-
-  // if (flippedIndexes.length === 2) {
-
-  // }
   console.log("rendering game");
+  useEffect(() => {
+    setGame(createNewGame());
+    console.log('hi');
+  }, [])
   return (
     <div className="game">
-        {photos.map((elem, index) => (
+      {game.map((elem, index) => (
           <Card
             pic={elem}
             key={index}
