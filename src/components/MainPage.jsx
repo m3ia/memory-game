@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Game from './Game.jsx'
 
 const MainPage = () => {
-  const [highScore, setHighScore] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
 
@@ -14,11 +14,9 @@ const MainPage = () => {
       <div className="container">
         <h1>Memory Game</h1>
         <Game
-          highScore={highScore}
-          setHighScore={setHighScore}
+          setScore={setScore}
         />
-        Hey there
-        <div className="highScore">High Score: {highScore}</div>
+        <div className="highScore">Score: {score}</div>
       </div>
     </div>
   );

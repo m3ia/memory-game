@@ -49,7 +49,7 @@ const createNewGame = () => {
   return newGame;
 }
 
-const Game = () => {
+const Game = ({setScore}) => {
   const [game, setGame] = useState([]);
   console.log('hi', game);
   const [flippedCount, setFlippedCount] = useState(0);
@@ -73,13 +73,14 @@ const Game = () => {
           let choice2 = flippedIndexes[flippedIndexes.length - 1];
           if (game[choice1] === game[choice2]) {
             setMatchedIndexes((m) => [...m, choice1, choice2])
+            setScore((s) => s + 1);
           }
           setFlippedIndexes([]);
           setFlippedCount(0);
         }
       }, 500);
     }
-  }, [game, flippedIndexes])
+  }, [game, setScore, flippedIndexes])
   
   return (
     <div className="game">
