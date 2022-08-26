@@ -11,6 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .game {
   display: flex;
@@ -19,4 +24,14 @@ code {
   flex-wrap: wrap;
   min-width: 813px;
   max-width: 813px;
+}
+
+.card img {
+    min-width: 250px;
+    padding: -250px;
+    margin: 10px;
+    max-height: 250px;
+    min-height: 250px;
+    overflow: hidden;
+
 }

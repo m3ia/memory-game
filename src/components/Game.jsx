@@ -1,4 +1,17 @@
 import React, { useState, useEffect } from "react";
+import imgA from '../images/a.jpg';
+import imgB from '../images/b.jpg';
+import imgC from '../images/c.jpg';
+import imgD from '../images/d.jpg';
+import imgE from '../images/e.jpg';
+import imgF from '../images/f.jpg';
+import imgG from '../images/g.jpg';
+import imgH from '../images/h.jpg';
+import imgI from '../images/i.jpg';
+import imgJ from '../images/j.jpg';
+import imgK from '../images/k.jpg';
+import imgL from '../images/l.jpg';
+
 import Card from './Card';
 const Game = (props) => {
   const [game, setGame] = useState([]);
@@ -6,18 +19,18 @@ const Game = (props) => {
   const [flippedIndexes, setFlippedIndexes] = useState([]);
 
   const photos = [
-    '../images/a.jpg',
-    '../images/b.jpg',
-    '../images/c.jpg',
-    '../images/d.jpg',
-    '../images/e.jpg',
-    '../images/f.jpg',
-    '../images/g.jpg',
-    '../images/h.jpg',
-    '../images/i.jpg',
-    '../images/j.jpg',
-    '../images/k.jpg',
-    '../images/l.jpg',
+    imgA,
+    imgB,
+    imgC,
+    imgD,
+    imgE,
+    imgF,
+    imgG,
+    imgH,
+    imgI,
+    imgJ,
+    imgK,
+    imgL,
   ]
 
   // Individual Img Click Handler
