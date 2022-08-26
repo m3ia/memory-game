@@ -7,11 +7,11 @@ const Card = ({pic, flippedIndexes, setFlippedIndexes, index, flippedCount, setF
 
   const clickPic = () => {
     // If card isn't flipped, then add index to flippedIndexes
-    if (!flippedIndexes.includes(index)) {
+    if (!flippedIndexes.includes(index) && flippedCount < 2) {
       setFlippedIndexes([...flippedIndexes, index]);
       // Update photo
       setImg(pic);
-      setFlippedCount(flippedCount++);
+      setFlippedCount(++flippedCount);
     }
     console.log(flippedIndexes);
   }
