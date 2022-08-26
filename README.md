@@ -2,7 +2,7 @@
 
 After taking one week some basics in [React](https://github.com/facebook/create-react-app), I created a memory game within a few hours. The game uses a set of imported images that a user can click and match based on memory.
 
-![memory game screenshot](./public/screenshot.png)
+![memory game screenshot](./public/screenshot1.png)
 ## Available Scripts
 
 In the project directory, you can run:
