@@ -64,7 +64,7 @@ const Game = () => {
     <div className="game">
       {game.map((elem, index) => (
           <Card
-            pic={elem}
+            pic={photos[elem]}
             key={index}
             flippedCount={flippedCount}
             setFlippedCount={setFlippedCount}

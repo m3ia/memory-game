@@ -5,7 +5,6 @@ import logo from '../images/logo-img.png'
 const Card = ({pic, flippedIndexes, setFlippedIndexes, index, flippedCount, setFlippedCount}) => {
   const [img, setImg] = useState(logo);
 
-  console.log("rendering card", index);
   const clickPic = () => {
     // If card isn't flipped, then add index to flippedIndexes
     if (!flippedIndexes.includes(index)) {
