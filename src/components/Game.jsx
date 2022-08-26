@@ -51,7 +51,6 @@ const createNewGame = () => {
 
 const Game = ({setScore}) => {
   const [game, setGame] = useState([]);
-  console.log('hi', game);
   const [flippedCount, setFlippedCount] = useState(0);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);

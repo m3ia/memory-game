@@ -22,8 +22,8 @@ code {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  min-width: 813px;
-  max-width: 813px;
+  min-width: 1156px;
+  max-width: 1156px;
 }
 
 .card img {
