@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import { useSpring, animated as a } from '@react-spring/web'
 import Game from './Game.jsx'
 
 const MainPage = () => {
   const [score, setScore] = useState(0);
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <div>

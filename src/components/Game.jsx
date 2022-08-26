@@ -55,6 +55,12 @@ const Game = ({setScore}) => {
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);
 
+  const resetGame = () => {
+    setFlippedCount(0);
+    setFlippedIndexes([]);
+    setMatchedIndexes([]);
+    setGame(createNewGame());
+  }
   const clickPic = (gameInd) => {
     setFlippedIndexes([...flippedIndexes, gameInd]);
     setFlippedCount(flippedCount + 1);
@@ -82,21 +88,24 @@ const Game = ({setScore}) => {
   }, [game, setScore, flippedIndexes])
   
   return (
-    <div className="game">
-      {game.map((photoInd, gameInd) => (
-          <Card
-            pic={photos[photoInd]}
-            key={gameInd}
-            flippedCount={flippedCount}
-            setFlippedCount={setFlippedCount}
-            flippedIndexes={flippedIndexes}
-            setFlippedIndexes={setFlippedIndexes}
-            photoInd={photoInd}
-            flipped={matchedIndexes.includes(gameInd) || flippedIndexes.includes(gameInd)}
-            onClick={() => clickPic(gameInd)}
-          />
+    <>
+      <div className="game">
+        {game.map((photoInd, gameInd) => (
+            <Card
+              pic={photos[photoInd]}
+              key={gameInd}
+              flippedCount={flippedCount}
+              setFlippedCount={setFlippedCount}
+              flippedIndexes={flippedIndexes}
+              setFlippedIndexes={setFlippedIndexes}
+              photoInd={photoInd}
+              flipped={matchedIndexes.includes(gameInd) || flippedIndexes.includes(gameInd)}
+              onClick={() => clickPic(gameInd)}
+            />
         ))}
-    </div>
+      </div>
+      <div className="resetBtn"><button onClick={resetGame}>Reset</button></div>
+  </>
   );
 }
 
