@@ -54,23 +54,46 @@ const Game = () => {
   console.log('hi', game);
   const [flippedCount, setFlippedCount] = useState(0);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
+  const [matchedIndexes, setMatchedIndexes] = useState([]);
 
-  console.log("rendering game");
+  const clickPic = (gameInd) => {
+    setFlippedIndexes([...flippedIndexes, gameInd]);
+    setFlippedCount(flippedCount + 1);
+    }
+  console.log('flipped indexes:', flippedIndexes);  
   useEffect(() => {
     setGame(createNewGame());
-    console.log('hi');
   }, [])
+
+  useEffect(() => {
+    if (flippedIndexes.length === 2) {
+      setTimeout(() => {
+        if (flippedIndexes.length >= 2) {
+          let choice1 = flippedIndexes[flippedIndexes.length - 2];
+          let choice2 = flippedIndexes[flippedIndexes.length - 1];
+          if (game[choice1] === game[choice2]) {
+            setMatchedIndexes((m) => [...m, choice1, choice2])
+          }
+          setFlippedIndexes([]);
+          setFlippedCount(0);
+        }
+      }, 500);
+    }
+  }, [game, flippedIndexes])
+  
   return (
     <div className="game">
-      {game.map((elem, index) => (
+      {game.map((photoInd, gameInd) => (
           <Card
-            pic={photos[elem]}
-            key={index}
+            pic={photos[photoInd]}
+            key={gameInd}
             flippedCount={flippedCount}
             setFlippedCount={setFlippedCount}
             flippedIndexes={flippedIndexes}
             setFlippedIndexes={setFlippedIndexes}
-            index={index}
+            photoInd={photoInd}
+            flipped={matchedIndexes.includes(gameInd) || flippedIndexes.includes(gameInd)}
+            onClick={() => clickPic(gameInd)}
           />
         ))}
     </div>
