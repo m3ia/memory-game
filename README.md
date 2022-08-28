@@ -4,6 +4,7 @@ This week at [Techtonica](https://https://techtonica.org/), we learned [React](h
 
 ![memory game screenshot](./public/screenshot1.png)
 
+Play it here: (link)[https://memory-game-m3ia.netlify.app/]
 ## Photo Credits:
 Thank you to all who took and shared these amazing photos:
 - [Unsplash.com](https://unsplash.com/)
