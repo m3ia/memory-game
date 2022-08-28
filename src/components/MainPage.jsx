@@ -12,7 +12,7 @@ const MainPage = () => {
         <Game
           setScore={setScore}
         />
-        <div className="highScore">Score: {score}</div>
+        <div className="score">Score: {score}</div>
       </div>
     </div>
   );
