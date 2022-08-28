@@ -1,7 +1,7 @@
 import logo from '../images/logo-img.png'
 
 
-const Card = ({pic, flippedIndexes, setFlippedIndexes, photoInd, flippedCount, setFlippedCount, flipped, onClick}) => {
+const Card = ({pic, flipped, onClick}) => {
 
     return (
       <div
