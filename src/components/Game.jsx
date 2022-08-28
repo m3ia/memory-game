@@ -28,6 +28,7 @@ const photos = [
   imgL,
 ]
 
+// Creates an array of indices for 6 randomly picked photos on each new game
 const createNewGame = () => {
   const newGame = [];
   let maxLength = 6;
@@ -51,38 +52,51 @@ const createNewGame = () => {
 
 const Game = ({setScore}) => {
   const [game, setGame] = useState([]);
+  // Represents # of cards currently flipped
   const [flippedCount, setFlippedCount] = useState(0);
+  // Represents an array of currently flipped photos' index in game[] (or "game indexes")
   const [flippedIndexes, setFlippedIndexes] = useState([]);
+  // Represents the game indexes of matched photos
   const [matchedIndexes, setMatchedIndexes] = useState([]);
 
+  // Click handler for reset button
   const resetGame = () => {
     setFlippedCount(0);
     setFlippedIndexes([]);
     setMatchedIndexes([]);
     setGame(createNewGame());
   }
+
+  // Click handler for flipping a picture
   const clickPic = (gameInd) => {
     setFlippedIndexes([...flippedIndexes, gameInd]);
     setFlippedCount(flippedCount + 1);
-    }
-  console.log('flipped indexes:', flippedIndexes);  
+  }
+  
+  // Creates a new game only on the first render
   useEffect(() => {
     setGame(createNewGame());
   }, [])
 
+  // Checks 
   useEffect(() => {
+    // Any time game, setScore, or flippedIndexes is updated, checks if 2 cards are flipped
     if (flippedIndexes.length === 2) {
+      // After 2 cards have been flipped, in the next .5 seconds:
       setTimeout(() => {
-        if (flippedIndexes.length >= 2) {
-          let choice1 = flippedIndexes[flippedIndexes.length - 2];
-          let choice2 = flippedIndexes[flippedIndexes.length - 1];
-          if (game[choice1] === game[choice2]) {
-            setMatchedIndexes((m) => [...m, choice1, choice2])
-            setScore((s) => s + 1);
-          }
-          setFlippedIndexes([]);
-          setFlippedCount(0);
+        // Represents index for first flipped card
+        let choice1 = flippedIndexes[flippedIndexes.length - 2];
+        // Represents index for second flipped card
+        let choice2 = flippedIndexes[flippedIndexes.length - 1];
+        // If we find a match, update matchedIndexes and score
+        if (game[choice1] === game[choice2]) {
+          setMatchedIndexes((m) => [...m, choice1, choice2])
+          setScore((s) => s + 1);
         }
+
+        // Whether we find a match or not, reset flippedIndexes array and flippedCount (this determines if the cards will be flipped back or not)
+        setFlippedIndexes([]);
+        setFlippedCount(0);
       }, 500);
     }
   }, [game, setScore, flippedIndexes])
@@ -90,6 +104,7 @@ const Game = ({setScore}) => {
   return (
     <>
       <div className="game">
+
         {game.map((photoInd, gameInd) => (
             <Card
               pic={photos[photoInd]}
